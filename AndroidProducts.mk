@@ -16,5 +16,5 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/asus_t100/asus_t100.mk \
-    $(LOCAL_DIR)/byt_mrd7/byt_mrd7.mk
+    $(LOCAL_DIR)/byt_mrd7/byt_mrd7.mk \
 
