@@ -17,3 +17,5 @@
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/byt_mrd7/byt_mrd7.mk \
     $(LOCAL_DIR)/ecs_e7/ecs_e7.mk \
+    $(LOCAL_DIR)/fxn_anchor8/fxn_anchor8.mk \
+
