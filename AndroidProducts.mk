@@ -20,4 +20,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/ecs_e7/ecs_e7.mk \
     $(LOCAL_DIR)/ecs_e7_32p/ecs_e7_32p.mk \
     $(LOCAL_DIR)/ecs_e7_64p/ecs_e7_64p.mk \
+    $(LOCAL_DIR)/minnow_max/minnow_max.mk \
 
