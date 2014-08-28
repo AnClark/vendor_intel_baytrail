@@ -5,7 +5,7 @@ mixinsdir: device/intel/mixins/groups
 product.mk: device.mk
 
 [groups]
-boot-arch: minnowboard_max
+boot-arch: minnowboard_max_mmc
 kernel: gmin64
 display-density: tv
 dalvik-heap: tablet-7in-hdpi-1024
