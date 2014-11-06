@@ -15,5 +15,5 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/minnowboard_max/minnowboard_max.mk \
+    $(LOCAL_DIR)/minnow_max/minnow_max.mk \
 

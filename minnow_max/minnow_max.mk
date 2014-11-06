@@ -20,8 +20,8 @@
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-PRODUCT_NAME := minnowboard_max
-PRODUCT_DEVICE := minnowboard_max
+PRODUCT_NAME := minnow_max
+PRODUCT_DEVICE := minnow_max
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := AOSP on Intel Platform
 PRODUCT_MANUFACTURER := Intel
@@ -31,5 +31,5 @@ PRODUCT_LOCALES := en_US en_IN fr_FR it_IT es_ES et_EE de_DE nl_NL cs_CZ pl_PL j
 
 BUILD_MULTI_PREBUILT := device/intel/baytrail/multi_prebuilt.mk
 
-$(call inherit-product, device/intel/baytrail/minnowboard_max/device.mk)
-$(call inherit-product-if-exists, vendor/intel/minnowboard_max/device-vendor.mk)
+$(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
+$(call inherit-product-if-exists, vendor/intel/minnow_max/device-vendor.mk)
