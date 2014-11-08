@@ -17,7 +17,7 @@ on post-fs
 ##############################################################
 # Source: device/intel/mixins/groups/usb-gadget/g_android/init.recovery.rc
 ##############################################################
-on init
+on boot
     # USB Gadget initialization
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
@@ -41,6 +41,6 @@ on init
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
     # /dev/block/by-name so that we can use the same fstabs everywhere.
-    symlink /dev/block/pci/pci0000:00/0000:00:12.0/by-name /dev/block/by-name
+    symlink /dev/block/platform/80860F16:00/by-name /dev/block/by-name
 
 # ------------------ END MIX-IN DEFINITIONS ------------------

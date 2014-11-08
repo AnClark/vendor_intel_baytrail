@@ -39,6 +39,11 @@ service pstore-clean /system/bin/pstore-clean
     class late_start
     oneshot
 
+service watchdogd /sbin/watchdogd
+    user root
+    class core
+    oneshot
+    seclabel u:r:watchdogd:s0
 ##############################################################
 # Source: device/intel/mixins/groups/graphics/ufo_gen7/init.rc.1
 ##############################################################
@@ -95,6 +100,7 @@ on init
     export EXTERNAL_STORAGE /storage/emulated/legacy
     export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
     export EMULATED_STORAGE_TARGET /storage/emulated
+    export SECONDARY_STORAGE /storage/sdcard1
 
     # Support legacy paths
     symlink /storage/emulated/legacy /sdcard
@@ -110,27 +116,27 @@ service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emul
     class late_start
 
 #external sdcard
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 
 #external storage
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
 #external storage
-service fuse_usbdisk2 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk2 /storage/usbdisk2
+service fuse_usbdisk2 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk2 /storage/usbdisk2
     class late_start
     disabled
 
 #external storage
-service fuse_usbdisk3 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk3 /storage/usbdisk3
+service fuse_usbdisk3 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk3 /storage/usbdisk3
     class late_start
     disabled
 
 #external storage
-service fuse_usbdisk4 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk4 /storage/usbdisk4
+service fuse_usbdisk4 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk4 /storage/usbdisk4
     class late_start
     disabled
 
@@ -153,7 +159,7 @@ on boot
 ##############################################################
 # Source: device/intel/mixins/groups/usb-gadget/g_android/init.rc
 ##############################################################
-on init
+on boot
     # USB Gadget initialization
     write /sys/class/android_usb/android0/enable 0
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
@@ -212,7 +218,7 @@ on init
     # in the generated path, so that the names pulled out of the GPT
     # can be associated with the correct disk. Create a shortcut to
     # /dev/block/by-name so that we can use the same fstabs everywhere.
-    symlink /dev/block/pci/pci0000:00/0000:00:12.0/by-name /dev/block/by-name
+    symlink /dev/block/platform/80860F16:00/by-name /dev/block/by-name
 
 ##############################################################
 # Source: device/intel/mixins/groups/bluetooth/btusb/init.rc

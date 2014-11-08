@@ -5,8 +5,8 @@ mixinsdir: device/intel/mixins/groups
 product.mk: device.mk
 
 [groups]
-boot-arch: minnow_max_mmc
-kernel: gmin64
+kernel: gmin64(path=gmin,loglevel=5)
+boot-arch: minnow_max_mmc(uefi_arch=x86_64,fastboot=user)
 display-density: tv
 dalvik-heap: tablet-7in-hdpi-1024
 cpu-arch: slm
