@@ -23,24 +23,12 @@
 # Source: device/intel/mixins/groups/disk-bus/mmc-minnow/ueventd.rc
 ##############################################################
 /dev/block/platform/80860F16:00/by-name/android_persistent   0660 system system
-# For I2C devices with 'enable' sysfs node
-
-/sys/devices/platform/*/i2c-*/i2c-* power_HAL_suspend 0644 system system
-
-##############################################################
-# Source: device/intel/mixins/groups/security/txei/ueventd.rc
-##############################################################
-# Used by HW-backed keystore
-/dev/mei                      0660   system     drmrpc
-
-# Used by WideVine
-/dev/meimm                    0660   system     drmrpc
-
 ##############################################################
 # Source: device/intel/mixins/groups/bluetooth/btusb/ueventd.rc
 ##############################################################
 #Bluedroid uhid support
 /dev/uhid                                    0660 bluetooth bluetooth
+
 # Bluetooth rfkill nodes
 /sys/devices/pci*/0000:00:*/usb*/*/*/*/bluetooth/hci0/rfkill* state  0660 bluetooth bluetooth
 /sys/devices/pci*/0000:00:*/usb*/*/*/*/bluetooth/hci0/rfkill* type   0440 bluetooth bluetooth

@@ -206,10 +206,8 @@ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.bluetooth.xml:
 
 ADDITIONAL_BUILD_PROPERTIES += bluetooth.hwcfg=stop \
                 bluetooth.rfkill=1
-
 ##############################################################
 # Source: device/intel/mixins/groups/gms/true/product.mk
-##############################################################
-$(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
-
+# ##############################################################
+# $(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
 # ------------------ END MIX-IN DEFINITIONS ------------------
