@@ -97,6 +97,8 @@ INSTALLED_RADIOIMAGE_TARGET += $(bootloader_zip) $(bootloader_metadata)
 bootloader_bin := $(PRODUCT_OUT)/bootloader
 $(bootloader_bin): \
 		$(bootloader_zip) \
+		$(MKDOSFS) \
+		$(MCOPY) \
 		$(BOOTLOADER_ADDITIONAL_DEPS) \
 		device/intel/build/bootloader_from_zip \
 
@@ -115,6 +117,8 @@ $(call dist-for-goals,droidcore,$(bootloader_bin):$(TARGET_PRODUCT)-bootloader-$
 fastboot_usb_bin := $(PRODUCT_OUT)/fastboot-usb.img
 $(fastboot_usb_bin): \
 		$(bootloader_zip) \
+		$(MKDOSFS) \
+		$(MCOPY) \
 		$(BOOTLOADER_ADDITIONAL_DEPS) \
 		device/intel/build/bootloader_from_zip \
 
@@ -153,6 +157,9 @@ else
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
 endif
 
+ifneq ($(EFI_IFWI_BIN),)
+$(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
+endif
 
 ##############################################################
 # Source: device/intel/mixins/groups/flashfiles/true/AndroidBoard.mk

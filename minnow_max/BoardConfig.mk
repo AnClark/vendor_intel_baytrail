@@ -1,37 +1,5 @@
 DEVICE_PACKAGE_OVERLAYS += device/intel/baytrail/minnow_max/overlay
 
-# SeLinux Policy
-BOARD_SEPOLICY_DIRS := device/intel/baytrail/minnow_max/sepolicy
-BOARD_SEPOLICY_REPLACE := \
-    domain.te
-BOARD_SEPOLICY_UNION := \
-    genfs_contexts \
-    file_contexts \
-    service_contexts \
-    platform_app.te \
-    coreu.te \
-    file.te \
-    bluetooth.te \
-    device.te \
-    gpsd.te \
-    init_shell.te \
-    netd.te \
-    pstore-clean.te \
-    surfaceflinger.te \
-    system_server.te \
-    userfastboot.te  \
-    vold.te \
-    wpa.te \
-    setup_fs.te \
-    hdcpd.te \
-    init.te \
-    kernel.te \
-    thermal.te \
-    service.te \
-    keystore.te \
-    drmserver.te \
-    mediaserver.te
-
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 4587520000
 
 BOARD_KERNEL_CMDLINE += i915.disable_power_well=0
@@ -136,6 +104,10 @@ BOOTLOADER_ADDITIONAL_ARGS += --fastboot $(PRODUCT_OUT)/fastboot.img
 
 BOARD_FLASHFILES += $(BOARD_GPT_INI):gpt.ini
 INSTALLED_RADIOIMAGE_TARGET += $(BOARD_GPT_INI)
+endif
+
+ifneq ($(EFI_EMMC_BIN),)
+BOARD_FLASHFILES += $(EFI_EMMC_BIN):emmc.bin
 endif
 
 ##############################################################

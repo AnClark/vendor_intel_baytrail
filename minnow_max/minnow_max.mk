@@ -30,5 +30,8 @@ PRODUCT_LOCALES := en_US en_IN fr_FR it_IT es_ES et_EE de_DE nl_NL cs_CZ pl_PL j
 
 BUILD_MULTI_PREBUILT := device/intel/baytrail/multi_prebuilt.mk
 
+PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := tvdpi
+
 $(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
 $(call inherit-product-if-exists, vendor/intel/minnow_max/device-vendor.mk)
