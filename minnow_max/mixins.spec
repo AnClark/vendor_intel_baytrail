@@ -7,7 +7,7 @@ product.mk: device.mk
 [groups]
 kernel: gmin64(path=gmin,loglevel=5)
 boot-arch: minnow_max_mmc(uefi_arch=x86_64,fastboot=user)
-display-density: tv
+display-density: low
 dalvik-heap: tablet-7in-hdpi-1024
 cpu-arch: slm
 graphics: ufo_gen7
