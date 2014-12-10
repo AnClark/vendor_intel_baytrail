@@ -11,7 +11,7 @@ display-density: low
 dalvik-heap: tablet-7in-hdpi-1024
 cpu-arch: slm
 graphics: ufo_gen7
-storage: sdcard-mmcblk1-4xUSB-sda-emulated
+storage: 4xUSB-sda-emulated
 ethernet: dhcp
 media: ufo
 usb: host+acc
