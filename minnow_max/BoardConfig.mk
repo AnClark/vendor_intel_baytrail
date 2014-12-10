@@ -252,6 +252,11 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/intel/common/bluetooth/bcm
 DEVICE_PACKAGE_OVERLAYS += device/intel/common/bluetooth/overlay-bt-pan
 
 ##############################################################
+# Source: device/intel/mixins/groups/audio/hdmi+usb/BoardConfig.mk
+##############################################################
+BOARD_USES_ALSA_AUDIO := true
+BOARD_USES_TINY_ALSA_AUDIO:= true
+##############################################################
 # Source: device/intel/mixins/groups/art-config/default/BoardConfig.mk
 ##############################################################
 # Enable dex-preoptimization to speed up the first boot sequence

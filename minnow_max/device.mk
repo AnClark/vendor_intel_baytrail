@@ -218,7 +218,22 @@ PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.bluetooth.xml:
 ADDITIONAL_BUILD_PROPERTIES += bluetooth.hwcfg=stop \
                 bluetooth.rfkill=1
 ##############################################################
+# Source: device/intel/mixins/groups/audio/hdmi+usb/product.mk
+##############################################################
+# Tinyalsa
+PRODUCT_PACKAGES_DEBUG += \
+         tinymix \
+         tinyplay \
+         tinycap
+
+# Extended Audio HALs
+PRODUCT_PACKAGES += \
+    audio.r_submix.default \
+    audio.hdmi.$(TARGET_BOARD_PLATFORM) \
+    audio.usb.default
+
+##############################################################
 # Source: device/intel/mixins/groups/gms/true/product.mk
-# ##############################################################
-# $(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
+##############################################################
+$(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
 # ------------------ END MIX-IN DEFINITIONS ------------------

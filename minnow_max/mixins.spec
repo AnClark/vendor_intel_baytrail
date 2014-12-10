@@ -23,6 +23,7 @@ disk-bus: mmc-minnow
 flashfiles: true
 serialport: ttyS0
 bluetooth: btusb
+audio: hdmi+usb
 suspend: never
 memory: ksm
 gms: true
