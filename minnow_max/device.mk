@@ -193,31 +193,10 @@ PRODUCT_PACKAGES += \
     libstagefright_soft_amrdec_mdp
 
 ##############################################################
-# Source: device/intel/mixins/groups/usb/host+acc/product.mk
+# Source: device/intel/mixins/groups/usb/host/product.mk
 ##############################################################
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-# usb accessory
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
-##############################################################
-# Source: device/intel/mixins/groups/usb-gadget/g_android/product.mk
-##############################################################
-# Set default USB interface
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += persist.sys.usb.config=mtp
-
-# Enable Secure Debugging
-ifneq ($(TARGET_BUILD_VARIANT),eng)
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
-endif
-
-# Add Intel adb keys for userdebug/eng builds
-ifneq ($(TARGET_BUILD_VARIANT),user)
-PRODUCT_COPY_FILES += device/intel/common/usb-gadget/adb_keys:root/adb_keys
-endif
 ##############################################################
 # Source: device/intel/mixins/groups/device-type/tablet/product.mk
 ##############################################################

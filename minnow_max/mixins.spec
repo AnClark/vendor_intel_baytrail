@@ -14,8 +14,7 @@ graphics: ufo_gen7
 storage: 4xUSB-sda-emulated
 ethernet: dhcp
 media: ufo
-usb: host+acc
-usb-gadget: g_android
+usb: host
 navigationbar: true
 device-type: tablet
 factory-scripts: true
