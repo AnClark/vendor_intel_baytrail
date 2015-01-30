@@ -18,5 +18,4 @@ add_lunch_combo byt_mrd7-userdebug
 add_lunch_combo ecs_e7-userdebug
 add_lunch_combo ecs_e7_32p-userdebug
 add_lunch_combo ecs_e7_64p-userdebug
-add_lunch_combo fxn_anchor8-userdebug
 
