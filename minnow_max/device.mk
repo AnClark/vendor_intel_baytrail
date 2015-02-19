@@ -25,6 +25,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
+# This will be copied as plugins/libart-extension.so library.
+# It is dynamically loaded by AOSP and contains Intel optimizations to the compiler.
+PRODUCT_PACKAGES += libart-extension
 
 # Enable Secure Debugging
 ifneq ($(TARGET_BUILD_VARIANT),eng)
