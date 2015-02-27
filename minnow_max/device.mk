@@ -21,11 +21,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
-# Add android.hardware.ethernet feature
-PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
-
-
 # Enable Secure Debugging
 ifneq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=1
@@ -169,6 +164,11 @@ PRODUCT_PROPERTY_OVERRIDES += ro.opengles.version = 196609
 PRODUCT_COPY_FILES += \
     device/intel/common/ufo/init.ufo.sh:system/etc/init.ufo.sh
 
+##############################################################
+# Source: device/intel/mixins/groups/ethernet/dhcp/product.mk
+##############################################################
+PRODUCT_COPY_FILES += \
+        frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 ##############################################################
 # Source: device/intel/mixins/groups/media/ufo/product.mk
 ##############################################################

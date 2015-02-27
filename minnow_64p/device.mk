@@ -170,6 +170,11 @@ PRODUCT_COPY_FILES += \
     device/intel/common/ufo/init.ufo.sh:system/etc/init.ufo.sh
 
 ##############################################################
+# Source: device/intel/mixins/groups/ethernet/dhcp/product.mk
+##############################################################
+PRODUCT_COPY_FILES += \
+        frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
+##############################################################
 # Source: device/intel/mixins/groups/media/ufo/product.mk
 ##############################################################
 # Make generic definition of media components.
