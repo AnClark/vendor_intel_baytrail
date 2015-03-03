@@ -26,3 +26,4 @@ bluetooth: btusb
 audio: hdmi+usb
 suspend: never
 memory: ksm
+adb_net: true

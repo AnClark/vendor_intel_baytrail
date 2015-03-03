@@ -200,6 +200,21 @@ on boot
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
 ##############################################################
+# Source: device/intel/mixins/groups/adb_net/true/init.rc
+##############################################################
+on init
+    setprop service.adb.tcp.port 5555
+
+# Adb over Network
+on property:service.adb.tcp.port=5555
+    stop adbd
+    start adbd
+
+on property:service.adb.tcp.port=-1
+    stop adbd
+    start adbd
+
+##############################################################
 # Source: device/intel/mixins/groups/bugreport/default/init.rc
 ##############################################################
 # bugreport is triggered by holding down volume down, volume up and power
