@@ -245,8 +245,4 @@ PRODUCT_PACKAGES += \
     audio.hdmi.$(TARGET_BOARD_PLATFORM) \
     audio.usb.default
 
-##############################################################
-# Source: device/intel/mixins/groups/gms/true/product.mk
-##############################################################
-$(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
 # ------------------ END MIX-IN DEFINITIONS ------------------

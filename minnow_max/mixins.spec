@@ -26,4 +26,3 @@ bluetooth: btusb
 audio: hdmi+usb
 suspend: never
 memory: ksm
-gms: true
