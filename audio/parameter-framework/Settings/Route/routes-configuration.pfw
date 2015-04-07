@@ -7,20 +7,18 @@ supDomain: StreamRoute
 			conf: Applicable
 				ALL
 					ANY
-						OutputDevices Includes Earpiece
-						OutputDevices Includes Ihf
-						OutputDevices Includes Headset
-						OutputDevices Includes Headphones
-						ALL
-							ANY
-								OutputDevices Includes Sco
-								OutputDevices Includes ScoHeadset
-								OutputDevices Includes ScoCarkit
+						SelectedOutputDevices Includes Earpiece
+						SelectedOutputDevices Includes Ihf
+						SelectedOutputDevices Includes Headset
+						SelectedOutputDevices Includes Headphones
+						SelectedOutputDevices Includes Sco
+						SelectedOutputDevices Includes ScoHeadset
+						SelectedOutputDevices Includes ScoCarkit
 					ANY
-						AndroidMode Is Normal
-						AndroidMode Is RingTone
-						AndroidMode Is InCsvCall
-						AndroidMode Is InVoipCall
+						Mode Is Normal
+						Mode Is RingTone
+						Mode Is InCsvCall
+						Mode Is InVoipCall
 					OutputFlags Includes Primary
 
 				/Route/route_mgr/routes/media/stream_duplex/playback/status/applicable = 1
@@ -33,32 +31,28 @@ supDomain: StreamRoute
 			conf: Applicable
 				ALL
 					ANY
+						SelectedInputDevices Includes ScoHeadset
+						SelectedInputDevices Includes Main
+						SelectedInputDevices Includes Headset
+						SelectedInputDevices Includes Back
 						ALL
-							InputDevices Includes ScoHeadset
-						InputDevices Includes Main
-						InputDevices Includes Headset
-						InputDevices Includes Back
-						ALL
-							InputDevices Includes VoiceCall
-							AndroidMode Is InCsvCall
-							ANY
-								ModemAudioAvailable Is True
-								# CmeDirectStreamPlayback Is True
-								# CmeDirectStreamCapture Is True
+							SelectedInputDevices Includes VoiceCall
+							Mode Is InCsvCall
+							ModemAudioAvailable Is True
 					ANY
 						InputSources Includes Mic
 						InputSources Includes Camcorder
 						InputSources Includes VoiceRecognition
 						ALL
 							InputSources Includes VoiceUplink
-							MicMute Is False
+							MicMuted Is False
 						InputSources Includes VoiceDownlink
 						InputSources Includes VoiceCall
 						InputSources Includes VoiceCommunication
 						InputSources Includes Hotword
 					ANY
-						PreProcessorRequestedByActiveInput Is Agc
-						PreProcessorRequestedByActiveInput Is none
+						PreProcEnabled Is Agc
+						PreProcEnabled Is none
 
 				/Route/route_mgr/routes/media/stream_duplex/capture/status/applicable = 1
 
@@ -79,18 +73,16 @@ supDomain: StreamRoute
 			conf: Applicable
 				ALL
 					ANY
-						OutputDevices Includes Earpiece
-						OutputDevices Includes Ihf
-						OutputDevices Includes Headset
-						OutputDevices Includes Headphones
-						ALL
-							ANY
-								OutputDevices Includes Sco
-								OutputDevices Includes ScoHeadset
-								OutputDevices Includes ScoCarkit
+						SelectedOutputDevices Includes Earpiece
+						SelectedOutputDevices Includes Ihf
+						SelectedOutputDevices Includes Headset
+						SelectedOutputDevices Includes Headphones
+						SelectedOutputDevices Includes Sco
+						SelectedOutputDevices Includes ScoHeadset
+						SelectedOutputDevices Includes ScoCarkit
 					ANY
-						AndroidMode Is Normal
-						AndroidMode Is RingTone
+						Mode Is Normal
+						Mode Is RingTone
 					OutputFlags Includes Fast
 
 				/Route/route_mgr/routes/low_latency/stream_playback/status/applicable = 1
@@ -106,16 +98,14 @@ supDomain: StreamRoute
 			conf: Applicable
 				ALL
 					ANY
-						OutputDevices Includes Earpiece
-						OutputDevices Includes Ihf
-						OutputDevices Includes Headset
-						OutputDevices Includes Headphones
-						ALL
-							ANY
-								OutputDevices Includes Sco
-								OutputDevices Includes ScoHeadset
-								OutputDevices Includes ScoCarkit
-					AndroidMode Is Normal
+						SelectedOutputDevices Includes Earpiece
+						SelectedOutputDevices Includes Ihf
+						SelectedOutputDevices Includes Headset
+						SelectedOutputDevices Includes Headphones
+						SelectedOutputDevices Includes Sco
+						SelectedOutputDevices Includes ScoHeadset
+						SelectedOutputDevices Includes ScoCarkit
+					Mode Is Normal
 					OutputFlags Includes Deep
 
 				/Route/route_mgr/routes/deep_media/stream_playback/status/applicable = 1
@@ -132,9 +122,9 @@ supDomain: StreamRoute
 
 				conf: Yes
 					ANY
-						StatesChanged Includes InputDevices
-						StatesChanged Includes MicMute
-						StatesChanged Includes PreProcessorRequestedByActiveInput
+						StatesChanged Includes SelectedInputDevices
+						StatesChanged Includes MicMuted
+						StatesChanged Includes PreProcEnabled
 
 					component: /Route/route_mgr/routes/voice/stream_duplex/capture/status/
 						need_reconfigure = 1
@@ -146,7 +136,7 @@ supDomain: StreamRoute
 		domain: Playback
 
 			conf: Yes
-				StatesChanged Includes OutputDevices
+				StatesChanged Includes SelectedOutputDevices
 
 				component: /Route/route_mgr/routes/
 					media/stream_duplex/playback/status/need_reconfigure = 1
@@ -162,8 +152,8 @@ supDomain: StreamRoute
 		domain: Capture
 
 			conf: Yes
-				StatesChanged Includes InputDevices
-				StatesChanged Includes PreProcessorRequestedByActiveInput
+				StatesChanged Includes SelectedInputDevices
+				StatesChanged Includes PreProcEnabled
 
 				component: /Route/route_mgr/routes/
 					media/stream_duplex/capture/status/need_reconfigure = 1
@@ -194,14 +184,14 @@ supDomain: Route
 			conf: Applicable
 				ANY
 					ALL
-						AndroidMode Is InCsvCall
+						Mode Is InCsvCall
 						ModemAudioAvailable Is True
 						TtyDirection Is Uplink
-						OutputDevices Includes Headset
+						SelectedOutputDevices Includes Headset
 					ALL
 						ANY
-							OutputDevices Includes Earpiece
-							OutputDevices Includes Ihf
+							SelectedOutputDevices Includes Earpiece
+							SelectedOutputDevices Includes Ihf
 						ANY
 							OutputFlags Includes Primary
 							OutputFlags Includes Fast
@@ -209,12 +199,11 @@ supDomain: Route
 							DirectStream Is True
 							ModemAudioAvailable Is True
 							FmEnabled Is True
-							# CmeDirectStreamPlayback Is True
 					## Copied from HwCodec1IA
 					ALL
 						ANY
-							OutputDevices Includes Headset
-							OutputDevices Includes Headphones
+							SelectedOutputDevices Includes Headset
+							SelectedOutputDevices Includes Headphones
 						ANY
 							OutputFlags Includes Primary
 							OutputFlags Includes Fast
@@ -222,7 +211,6 @@ supDomain: Route
 							DirectStream Is True
 							ModemAudioAvailable Is True
 							FmEnabled Is True
-							# CmeDirectStreamPlayback Is True
 
 				/Route/route_mgr/routes/hwcodec0ia/route_duplex/playback/status/applicable = 1
 
@@ -236,21 +224,19 @@ supDomain: Route
 				ANY
 					# ContextAwareness Is True
 					ALL
-						AndroidMode Is InCsvCall
+						Mode Is InCsvCall
+						ModemAudioAvailable Is True
 						ANY
-							ModemAudioAvailable Is True
-							# CmeDirectStreamCapture Is True
-						ANY
-							OutputDevices Includes Earpiece
-							OutputDevices Includes Ihf
-							OutputDevices Includes Headphones
+							SelectedOutputDevices Includes Earpiece
+							SelectedOutputDevices Includes Ihf
+							SelectedOutputDevices Includes Headphones
 							ALL
-								OutputDevices Includes Headset
+								SelectedOutputDevices Includes Headset
 								TtyDirection Is Downlink
 					ALL
 						ANY
-							InputDevices Includes Back
-							InputDevices Includes Main
+							SelectedInputDevices Includes Back
+							SelectedInputDevices Includes Main
 						ANY
 							InputSources Includes Mic
 							InputSources Includes Camcorder
@@ -259,7 +245,7 @@ supDomain: Route
 							InputSources Includes Hotword
 					## Copied from HwCodec1IA
 					ALL
-						InputDevices Includes Headset
+						SelectedInputDevices Includes Headset
 						ANY
 							InputSources Includes Mic
 							InputSources Includes Camcorder
@@ -267,11 +253,9 @@ supDomain: Route
 							InputSources Includes VoiceCommunication
 							InputSources Includes Hotword
 					ALL
-						OutputDevices Includes Headset
-						AndroidMode Is InCsvCall
-						ANY
-							ModemAudioAvailable Is True
-							# CmeDirectStreamCapture Is True
+						SelectedOutputDevices Includes Headset
+						Mode Is InCsvCall
+						ModemAudioAvailable Is True
 
 				/Route/route_mgr/routes/hwcodec0ia/route_duplex/capture/status/applicable = 1
 
@@ -298,16 +282,16 @@ supDomain: Route
 
 			conf: Applicable
 				ALL
-					AndroidMode Is InCsvCall
+					Mode Is InCsvCall
 					ModemAudioAvailable Is True
 					ANY
-						OutputDevices Is Ihf
-						OutputDevices Is Headset
-						OutputDevices Is Headphones
-						OutputDevices Is Earpiece
-						OutputDevices Is Sco
-						OutputDevices Is ScoHeadset
-						OutputDevices Is ScoCarkit
+						SelectedOutputDevices Is Ihf
+						SelectedOutputDevices Is Headset
+						SelectedOutputDevices Is Headphones
+						SelectedOutputDevices Is Earpiece
+						SelectedOutputDevices Is Sco
+						SelectedOutputDevices Is ScoHeadset
+						SelectedOutputDevices Is ScoCarkit
 
 				component: /Route/route_mgr/routes/modemia/
 					route_duplex/playback/status/applicable = 1
@@ -322,8 +306,8 @@ supDomain: Route
 
 			conf: Yes
 				ANY
-					StatesChanged Includes MicMute
-					StatesChanged Includes OutputDevices
+					StatesChanged Includes MicMuted
+					StatesChanged Includes SelectedOutputDevices
 
 				component: /Route/route_mgr/routes/modemia/route_duplex/playback/status/
 					need_reconfigure = 1
@@ -340,19 +324,17 @@ supDomain: Route
 				ALL
 					ALL
 						ANY
-							OutputDevices Includes Sco
-							OutputDevices Includes ScoHeadset
-							OutputDevices Includes ScoCarkit
+							SelectedOutputDevices Includes Sco
+							SelectedOutputDevices Includes ScoHeadset
+							SelectedOutputDevices Includes ScoCarkit
 						ANY
 							OutputFlags Includes Primary
 							OutputFlags Includes Fast
 							OutputFlags Includes Deep
 							DirectStream Is True
 							ALL
-								AndroidMode Is InCsvCall
-								ANY
-									ModemAudioAvailable Is True
-									# CmeDirectStreamPlayback Is True
+								Mode Is InCsvCall
+								ModemAudioAvailable Is True
 
 				/Route/route_mgr/routes/bt_ia/route_duplex/playback/status/applicable = 1
 
@@ -365,16 +347,14 @@ supDomain: Route
 				ALL
 					ANY
 						ALL
-							AndroidMode Is InCsvCall
+							Mode Is InCsvCall
+							ModemAudioAvailable Is True
 							ANY
-								ModemAudioAvailable Is True
-								# CmeDirectStreamCapture Is True
-							ANY
-								OutputDevices Includes Sco
-								OutputDevices Includes ScoHeadset
-								OutputDevices Includes ScoCarkit
+								SelectedOutputDevices Includes Sco
+								SelectedOutputDevices Includes ScoHeadset
+								SelectedOutputDevices Includes ScoCarkit
 						ALL
-							InputDevices Includes ScoHeadset
+							SelectedInputDevices Includes ScoHeadset
 							ANY
 								InputSources Includes Mic
 								InputSources Includes Camcorder
@@ -411,11 +391,10 @@ supDomain: Route
 					ANY
 						StatesChanged Includes HacSelected
 						StatesChanged Includes TtyDirection
-						StatesChanged Includes AndroidMode
+						StatesChanged Includes Mode
 						StatesChanged Includes CsvBandType
 						StatesChanged Includes VoIPBandType
-						StatesChanged Includes ImsBandType
-						StatesChanged Includes OutputDevices
+						StatesChanged Includes SelectedOutputDevices
 
 					component: /Route/route_mgr/routes/
 						hwcodec0ia/route_duplex/playback/status/need_reconfigure = 1
@@ -432,12 +411,11 @@ supDomain: Route
 					ANY
 						StatesChanged Includes HacSelected
 						StatesChanged Includes TtyDirection
-						StatesChanged Includes AndroidMode
+						StatesChanged Includes Mode
 						StatesChanged Includes CsvBandType
 						StatesChanged Includes VoIPBandType
-						StatesChanged Includes ImsBandType
-						StatesChanged Includes InputDevices
-						StatesChanged Includes MicMute
+						StatesChanged Includes SelectedInputDevices
+						StatesChanged Includes MicMuted
 
 					component: /Route/route_mgr/routes/
 						hwcodec0ia/route_duplex/capture/status/need_reconfigure = 1
@@ -456,12 +434,10 @@ supDomain: Route
 
 				conf: Yes
 					ANY
-						AndroidMode Is InVoipCall
+						Mode Is InVoipCall
 						ALL
-							AndroidMode Is InCsvCall
-							ANY
-								ModemAudioAvailable Is True
-								# CmeDirectStreamCapture Is True
+							Mode Is InCsvCall
+							ModemAudioAvailable Is True
 
 					/Route/route_mgr/routes/voice_processing_lock/route_duplex/capture/status/applicable = 1
 
@@ -472,12 +448,10 @@ supDomain: Route
 
 				conf: Yes
 					ANY
-						AndroidMode Is InVoipCall
+						Mode Is InVoipCall
 						ALL
-							AndroidMode Is InCsvCall
-							ANY
-								ModemAudioAvailable Is True
-								# CmeDirectStreamPlayback Is True
+							Mode Is InCsvCall
+							ModemAudioAvailable Is True
 
 					/Route/route_mgr/routes/voice_processing_lock/route_duplex/playback/status/applicable = 1
 
@@ -489,11 +463,11 @@ supDomain: Route
 			conf: Yes
 				ANY
 					ALL
-						AndroidMode Is InCsvCall
+						Mode Is InCsvCall
 						ModemAudioAvailable Is True
 						StatesChanged Includes CsvBandType
 					ALL
-						AndroidMode Is InVoipCall
+						Mode Is InVoipCall
 						StatesChanged Includes VoIPBandType
 				/Route/route_mgr/routes/voice_processing_lock/route_duplex/playback/status/need_reroute = 1
 				/Route/route_mgr/routes/voice_processing_lock/route_duplex/capture/status/need_reroute = 1

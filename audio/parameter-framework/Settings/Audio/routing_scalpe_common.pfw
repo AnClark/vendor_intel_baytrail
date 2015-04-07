@@ -109,7 +109,7 @@ domainGroup: Routing.Lpe
 
 		# 	domain: Uplink
 		# 		conf: Unmute
-		# 			MicMute Is Off
+		# 			MicMuted Is Off
 		# 			/Audio/lpe/pipe/tx_speech_loop/ul_gain/mute = 0
 		# 			/Audio/lpe/pipe/hf_ref/gain/mute = 0
 		# 			/Audio/lpe/pipe/sidetone/gain/mute = 0
@@ -125,12 +125,11 @@ domainGroup: Routing.Lpe
 
 		# 	domain: Uplink
 		# 		conf: Unmute
-		# 			SelectedInputDevice Includes Ambient
+		# 			SelectedInputDevices Includes Ambient
 		# 			OpenedCaptureRoutes Includes HwCodec0IA
 		# 			ANY
 		# 				Mode Is InCsvCall
 		# 				Mode Is InVoipCall
-		# 				Mode Is InImsCall
 		# 			/Audio/lpe/pipe/hf_sns2/gain/mute = 0
 		# 		conf: Mute
 		# 			/Audio/lpe/pipe/hf_sns2/gain/mute = 1
@@ -139,18 +138,14 @@ domainGroup: Routing.Lpe
 
 		# 	domain: Uplink
 		# 		conf: Unmute
-		# 			ANY
-		# 				OpenedCaptureRoutes Includes Voice
-		# 				OpenedCaptureRoutes Includes CmeVoice
+		#			OpenedCaptureRoutes Includes Voice
 		# 			/Audio/lpe/pipe/voip_out/gain/mute = 0
 		# 		conf: Mute
 		# 			/Audio/lpe/pipe/voip_out/gain/mute = 1
 
 		# 	domain: Downlink
 		# 		conf: Unmute
-		# 			ANY
-		# 				OpenedPlaybackRoutes Includes Voice
-		# 				OpenedPlaybackRoutes Includes CmeVoice
+		#			OpenedPlaybackRoutes Includes Voice
 		# 			/Audio/lpe/pipe/voip_in/gain/mute = 0
 		# 		conf: Mute
 		# 			/Audio/lpe/pipe/voip_in/gain/mute = 1
@@ -161,8 +156,8 @@ domainGroup: Routing.Lpe
 		# 			# Limit the Tone to CSV call only
 		# 			OpenedCaptureRoutes Includes ModemIA
 		# 			ANY
-		# 				AudioSource Is VoiceDownlink
-		# 				AudioSource Is VoiceCall
+		# 				InputSources Is VoiceDownlink
+		# 				InputSources Is VoiceCall
 		# 			/Audio/lpe/pipe/tone/gain/mute = 0
 		# 		conf: Mute
 		# 			/Audio/lpe/pipe/tone/gain/mute = 1
@@ -180,8 +175,8 @@ domainGroup: Routing.Lpe
 	# 				# Limit the Tone to CSV call only
 	# 				OpenedCaptureRoutes Includes ModemIA
 	# 				ANY
-	# 					AudioSource Is VoiceDownlink
-	# 					AudioSource Is VoiceCall
+	# 					InputSources Is VoiceDownlink
+	# 					InputSources Is VoiceCall
 	# 				# https://android.intel.com/#/c/183438
 	# 				# [Revert me] Audio: Disable tone generator pipe
 	# 				/Audio/lpe/pipe/tone/switch = 0
@@ -241,7 +236,7 @@ domainGroup: Routing.Lpe
 			# 			OpenedPlaybackRoutes Includes DeepMedia
 			# 			OpenedPlaybackRoutes Includes CompressedMedia
 			# 		OpenedPlaybackRoutes Includes HwCodec0IA
-			# 		SelectedOutputDevice Includes IHF
+			# 		SelectedOutputDevices Includes Ihf
 			# 		/Audio/lpe/main_mixer/sprot_loop/mix/media_loop1 = 1
 			# 	conf: Unbind
 			# 		/Audio/lpe/main_mixer/sprot_loop/mix/media_loop1 = 0
@@ -256,7 +251,7 @@ domainGroup: Routing.Lpe
 				# domain: ToSpeakerEq
 				# 	conf: Bind
 				# 		OpenedPlaybackRoutes Includes HwCodec0IA
-				# 		SelectedOutputDevice Includes IHF
+				# 		SelectedOutputDevices Includes Ihf
 				# 		/Audio/lpe/main_mixer/media_loop1/mix/pcm0 = 1
 				# 	conf: Unbind
 				# 		/Audio/lpe/main_mixer/media_loop1/mix/pcm0 = 0
@@ -282,7 +277,7 @@ domainGroup: Routing.Lpe
 			# 	domain: ToSpeakerEq
 			# 		conf: Bind
 			# 			OpenedPlaybackRoutes Includes HwCodec0IA
-			# 			SelectedOutputDevice Includes IHF
+			# 			SelectedOutputDevices Includes Ihf
 			# 			/Audio/lpe/main_mixer/media_loop1/mix/low_latency = 1
 			# 		conf: Unbind
 			# 			/Audio/lpe/main_mixer/media_loop1/mix/low_latency = 0
@@ -290,7 +285,7 @@ domainGroup: Routing.Lpe
 			# 	domain: ToEarpiece
 			# 		conf: Bind
 			# 			OpenedPlaybackRoutes Includes HwCodec0IA
-			# 			SelectedOutputDevice Includes Earpiece
+			# 			SelectedOutputDevices Includes Earpiece
 			# 			/Audio/lpe/main_mixer/codec_out/mix/low_latency = 1
 			# 		conf: Unbind
 			# 			/Audio/lpe/main_mixer/codec_out/mix/low_latency = 0
@@ -334,7 +329,7 @@ domainGroup: Routing.Lpe
 			# 	domain: SprotToSpeaker
 			# 		conf: Bind
 			# 			OpenedPlaybackRoutes Includes HwCodec0IA
-			# 			SelectedOutputDevice Includes IHF
+			# 			SelectedOutputDevices Includes Ihf
 			# 			/Audio/lpe/main_mixer/codec_out/mix/sprot_loop = 1
 			# 		conf: Unbind
 			# 			/Audio/lpe/main_mixer/codec_out/mix/sprot_loop = 0
@@ -345,9 +340,9 @@ domainGroup: Routing.Lpe
 
 			domainGroup: Media
 				confType: Bind
-					AudioSource IsNot VoiceUplink
-					AudioSource IsNot VoiceDownlink
-					AudioSource IsNot VoiceCall
+					InputSources IsNot VoiceUplink
+					InputSources IsNot VoiceDownlink
+					InputSources IsNot VoiceCall
 
 				# temporary: we should use the media loop, as done below
 				# but only for digital mic
@@ -390,8 +385,8 @@ domainGroup: Routing.Lpe
 		# 		domain: Downlink
 		# 			conf: Bind
 		# 				ANY
-		# 					AudioSource Is VoiceDownlink
-		# 					AudioSource Is VoiceCall
+		# 					InputSources Is VoiceDownlink
+		# 					InputSources Is VoiceCall
 		# 				/Audio/lpe/main_mixer/pcm1/mix/rx_speech = 1
 		# 			conf: Unbind
 		# 				/Audio/lpe/main_mixer/pcm1/mix/rx_speech = 0
@@ -399,8 +394,8 @@ domainGroup: Routing.Lpe
 		# 		domain: Uplink
 		# 			conf: Bind
 		# 				ANY
-		# 					AudioSource Is VoiceUplink
-		# 					AudioSource Is VoiceCall
+		# 					InputSources Is VoiceUplink
+		# 					InputSources Is VoiceCall
 		# 				/Audio/lpe/main_mixer/pcm1/mix/tx_speech = 1
 		# 			conf: Unbind
 		# 				/Audio/lpe/main_mixer/pcm1/mix/tx_speech = 0
@@ -415,7 +410,6 @@ domainGroup: Routing.Lpe
 		# 					# the "call" mode implies to activate some algos
 		# 					Mode Is InVoipCall
 		# 					Mode Is InCsvCall
-		# 					Mode Is InImsCall
 		# 			/Audio/lpe/main_mixer/tx_speech/mix/codec_in = 1
 
 		# 		conf: Unbind
@@ -426,7 +420,6 @@ domainGroup: Routing.Lpe
 		# 			ANY
 		# 				Mode Is InVoipCall
 		# 				Mode Is InCsvCall
-		# 				Mode Is InImsCall
 
 		# 		domain: Bluetooth
 		# 			conf: Bind
@@ -445,7 +438,7 @@ domainGroup: Routing.Lpe
 		# 					ALL
 		# 						OpenedCaptureRoutes Includes BtIA
 		# 						BtHeadsetNrEc Is False
-		# 					TTYDirection Excludes Uplink
+		# 					TtyDirection Excludes Uplink
 		# 				/Audio/lpe/main_mixer/hf_ref/mix/rx_speech = 1
 		# 			conf: Unbind
 		# 				/Audio/lpe/main_mixer/hf_ref/mix/rx_speech = 0
@@ -455,12 +448,11 @@ domainGroup: Routing.Lpe
 		# 			ANY
 		# 				Mode Is InVoipCall
 		# 				Mode Is InCsvCall
-		# 				Mode Is InImsCall
 
 		# 		domain: Earpiece
 		# 			conf: Bind
 		# 				OpenedPlaybackRoutes Includes HwCodec0IA
-		# 				SelectedOutputDevice Includes Earpiece
+		# 				SelectedOutputDevices Includes Earpiece
 		# 				/Audio/lpe/main_mixer/codec_out/mix/rx_speech = 1
 		# 				/Audio/lpe/main_mixer/codec_out/mix/sidetone = 1
 		# 			conf: Unbind
@@ -470,7 +462,7 @@ domainGroup: Routing.Lpe
 		# 		domain: Ihf
 		# 			conf: Bind
 		# 				OpenedPlaybackRoutes Includes HwCodec0IA
-		# 				SelectedOutputDevice Includes IHF
+		# 				SelectedOutputDevices Includes Ihf
 		# 				/Audio/lpe/main_mixer/sprot_loop/mix/rx_speech = 1
 		# 				/Audio/lpe/main_mixer/sprot_loop/mix/sidetone = 1
 		# 			conf: Unbind
@@ -507,7 +499,6 @@ domainGroup: Routing.Lpe
 		# 	confType: Bind
 		# 		ANY
 		# 			Mode Is InVoipCall
-		# 			Mode Is InImsCall
 
 		# 	domain: Uplink
 		# 		conf: Bind
@@ -529,12 +520,11 @@ domainGroup: Routing.Lpe
 		# 	domain: Dmic
 		# 		conf: Bind
 		# 			# Route ssp_d to hf_sns2 (only 1 channel will be used)
-		# 			SelectedInputDevice Includes Ambient
+		# 			SelectedInputDevices Includes Ambient
 		# 			OpenedCaptureRoutes Includes HwCodec0IA
 		# 			ANY
 		# 				Mode Is InCsvCall
 		# 				Mode Is InVoipCall
-		# 				Mode Is InImsCall
 		# 			/Audio/lpe/main_mixer/hf_sns2/mix/codec_in = 1
 		# 		conf: Unbind
 		# 			/Audio/lpe/main_mixer/hf_sns2/mix/codec_in = 0
@@ -545,8 +535,8 @@ domainGroup: Routing.Lpe
 		# 			# Limit the Tone to CSV call only
 		# 			OpenedCaptureRoutes Includes ModemIA
 		# 			ANY
-		# 				AudioSource Is VoiceDownlink
-		# 				AudioSource Is VoiceCall
+		# 				InputSources Is VoiceDownlink
+		# 				InputSources Is VoiceCall
 		# 			/Audio/lpe/main_mixer/modem/mix/tone = 1
 		# 		conf: Unbind
 		# 			/Audio/lpe/main_mixer/modem/mix/tone = 0
