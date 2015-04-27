@@ -20,14 +20,15 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/stop_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/avail_min"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_use_cases"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/direct"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/primary"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/fast"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/deep_buffer"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/compress_offload"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/non_blocking"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/hw_av_sync"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/direct"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/primary"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/deep_buffer"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/compress_offload"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/non_blocking"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/hw_av_sync"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/require_preenable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/require_postdisable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/silence_prolog_ms"/>
@@ -42,16 +43,18 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/avail_min"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/default"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/mic"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_uplink"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_downlink"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_call"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/camcorder"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_recognition"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_communication"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/remote_submix"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/hotword"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_flags/input_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_flags/input_flags/hw_hotword"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/default"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/mic"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_uplink"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_downlink"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_call"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/camcorder"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_recognition"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_communication"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/remote_submix"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/hotword"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/require_preenable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/require_postdisable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/silence_prolog_ms"/>
@@ -65,14 +68,15 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/stop_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/avail_min"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_use_cases"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/direct"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/primary"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/fast"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/deep_buffer"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/compress_offload"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/non_blocking"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/hw_av_sync"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/direct"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/primary"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/deep_buffer"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/compress_offload"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/non_blocking"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/hw_av_sync"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/require_preenable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/require_postdisable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/silence_prolog_ms"/>
@@ -87,16 +91,18 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/avail_min"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/default"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/mic"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_uplink"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_downlink"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_call"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/camcorder"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_recognition"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_communication"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/remote_submix"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/hotword"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_flags/input_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_flags/input_flags/hw_hotword"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/default"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/mic"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_uplink"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_downlink"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_call"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/camcorder"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_recognition"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_communication"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/remote_submix"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/hotword"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/require_preenable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/require_postdisable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/silence_prolog_ms"/>
@@ -110,14 +116,15 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/stop_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/avail_min"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_use_cases"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/direct"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/primary"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/fast"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/deep_buffer"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/compress_offload"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/non_blocking"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/hw_av_sync"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/direct"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/primary"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/deep_buffer"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/compress_offload"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/non_blocking"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/hw_av_sync"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/require_preenable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/require_postdisable"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/silence_prolog_ms"/>
@@ -131,14 +138,15 @@
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/stop_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/silence_threshold"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/avail_min"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_use_cases"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/effects_supported"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/direct"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/primary"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/fast"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/deep_buffer"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/compress_offload"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/non_blocking"/>
-      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/hw_av_sync"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/direct"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/primary"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/fast"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/deep_buffer"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/compress_offload"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/non_blocking"/>
+      <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/hw_av_sync"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/modemia/route_duplex/playback/status/need_reconfigure"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/bt_ia/route_duplex/playback/status/need_reconfigure"/>
       <ConfigurableElement Path="/Route/route_mgr/routes/bt_ia/route_duplex/capture/status/need_reconfigure"/>
@@ -184,28 +192,31 @@
         <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/avail_min">
           <IntegerParameter Name="avail_min">0</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/effects_supported">
-          <StringParameter Name="effects_supported"></StringParameter>
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_use_cases">
+          <IntegerParameter Name="supported_use_cases">0</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/direct">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/effects_supported">
+          <StringParameter Name="effects_supported">""</StringParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/direct">
           <BitParameter Name="direct">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/primary">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/primary">
           <BitParameter Name="primary">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/fast">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/fast">
           <BitParameter Name="fast">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/deep_buffer">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/deep_buffer">
           <BitParameter Name="deep_buffer">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/compress_offload">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/compress_offload">
           <BitParameter Name="compress_offload">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/non_blocking">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/non_blocking">
           <BitParameter Name="non_blocking">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/attributes/output_flags/hw_av_sync">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/playback/config/supported_flags/output_flags/hw_av_sync">
           <BitParameter Name="hw_av_sync">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/require_preenable">
@@ -248,36 +259,42 @@
           <IntegerParameter Name="avail_min">1152</IntegerParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/effects_supported">
-          <StringParameter Name="effects_supported"></StringParameter>
+          <StringParameter Name="effects_supported">""</StringParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/default">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_flags/input_flags/fast">
+          <BitParameter Name="fast">1</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_flags/input_flags/hw_hotword">
+          <BitParameter Name="hw_hotword">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/default">
           <BitParameter Name="default">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/mic">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/mic">
           <BitParameter Name="mic">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_uplink">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_uplink">
           <BitParameter Name="voice_uplink">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_downlink">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_downlink">
           <BitParameter Name="voice_downlink">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_call">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_call">
           <BitParameter Name="voice_call">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/camcorder">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/camcorder">
           <BitParameter Name="camcorder">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_recognition">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_recognition">
           <BitParameter Name="voice_recognition">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/voice_communication">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/voice_communication">
           <BitParameter Name="voice_communication">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/remote_submix">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/remote_submix">
           <BitParameter Name="remote_submix">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/attributes/input_sources/hotword">
+        <ConfigurableElement Path="/Route/route_mgr/routes/media/stream_duplex/capture/config/supported_use_cases/input_sources/hotword">
           <BitParameter Name="hotword">1</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/require_preenable">
@@ -319,28 +336,31 @@
         <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/avail_min">
           <IntegerParameter Name="avail_min">320</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/effects_supported">
-          <StringParameter Name="effects_supported"></StringParameter>
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_use_cases">
+          <IntegerParameter Name="supported_use_cases">0</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/direct">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/effects_supported">
+          <StringParameter Name="effects_supported">""</StringParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/direct">
           <BitParameter Name="direct">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/primary">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/primary">
           <BitParameter Name="primary">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/fast">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/fast">
           <BitParameter Name="fast">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/deep_buffer">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/deep_buffer">
           <BitParameter Name="deep_buffer">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/compress_offload">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/compress_offload">
           <BitParameter Name="compress_offload">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/non_blocking">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/non_blocking">
           <BitParameter Name="non_blocking">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/attributes/output_flags/hw_av_sync">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/playback/config/supported_flags/output_flags/hw_av_sync">
           <BitParameter Name="hw_av_sync">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/require_preenable">
@@ -385,34 +405,40 @@
         <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/effects_supported">
           <StringParameter Name="effects_supported">Automatic Gain Control,Noise Suppression,Acoustic Echo Canceller</StringParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/default">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_flags/input_flags/fast">
+          <BitParameter Name="fast">1</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_flags/input_flags/hw_hotword">
+          <BitParameter Name="hw_hotword">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/default">
           <BitParameter Name="default">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/mic">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/mic">
           <BitParameter Name="mic">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_uplink">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_uplink">
           <BitParameter Name="voice_uplink">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_downlink">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_downlink">
           <BitParameter Name="voice_downlink">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_call">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_call">
           <BitParameter Name="voice_call">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/camcorder">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/camcorder">
           <BitParameter Name="camcorder">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_recognition">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_recognition">
           <BitParameter Name="voice_recognition">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/voice_communication">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/voice_communication">
           <BitParameter Name="voice_communication">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/remote_submix">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/remote_submix">
           <BitParameter Name="remote_submix">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/attributes/input_sources/hotword">
+        <ConfigurableElement Path="/Route/route_mgr/routes/voice/stream_duplex/capture/config/supported_use_cases/input_sources/hotword">
           <BitParameter Name="hotword">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/require_preenable">
@@ -454,28 +480,31 @@
         <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/avail_min">
           <IntegerParameter Name="avail_min">4608</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/effects_supported">
-          <StringParameter Name="effects_supported"></StringParameter>
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_use_cases">
+          <IntegerParameter Name="supported_use_cases">0</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/direct">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/effects_supported">
+          <StringParameter Name="effects_supported">""</StringParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/direct">
           <BitParameter Name="direct">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/primary">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/primary">
           <BitParameter Name="primary">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/fast">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/fast">
           <BitParameter Name="fast">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/deep_buffer">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/deep_buffer">
           <BitParameter Name="deep_buffer">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/compress_offload">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/compress_offload">
           <BitParameter Name="compress_offload">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/non_blocking">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/non_blocking">
           <BitParameter Name="non_blocking">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/attributes/output_flags/hw_av_sync">
+        <ConfigurableElement Path="/Route/route_mgr/routes/deep_media/stream_playback/config/supported_flags/output_flags/hw_av_sync">
           <BitParameter Name="hw_av_sync">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/require_preenable">
@@ -517,28 +546,31 @@
         <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/avail_min">
           <IntegerParameter Name="avail_min">240</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/effects_supported">
-          <StringParameter Name="effects_supported"></StringParameter>
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_use_cases">
+          <IntegerParameter Name="supported_use_cases">0</IntegerParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/direct">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/effects_supported">
+          <StringParameter Name="effects_supported">""</StringParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/direct">
           <BitParameter Name="direct">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/primary">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/primary">
           <BitParameter Name="primary">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/fast">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/fast">
           <BitParameter Name="fast">1</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/deep_buffer">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/deep_buffer">
           <BitParameter Name="deep_buffer">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/compress_offload">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/compress_offload">
           <BitParameter Name="compress_offload">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/non_blocking">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/non_blocking">
           <BitParameter Name="non_blocking">0</BitParameter>
         </ConfigurableElement>
-        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/attributes/output_flags/hw_av_sync">
+        <ConfigurableElement Path="/Route/route_mgr/routes/low_latency/stream_playback/config/supported_flags/output_flags/hw_av_sync">
           <BitParameter Name="hw_av_sync">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Route/route_mgr/routes/modemia/route_duplex/playback/status/need_reconfigure">
@@ -562,13 +594,9 @@
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Ihf"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headset"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headphones"/>
-            <CompoundRule Type="All">
-              <CompoundRule Type="Any">
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
-              </CompoundRule>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
           </CompoundRule>
           <CompoundRule Type="Any">
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="Normal"/>
@@ -604,18 +632,14 @@
       <Configuration Name="Applicable">
         <CompoundRule Type="All">
           <CompoundRule Type="Any">
-            <CompoundRule Type="All">
-              <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
             <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="Main"/>
             <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="Headset"/>
             <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="Back"/>
             <CompoundRule Type="All">
               <SelectionCriterionRule SelectionCriterion="SelectedInputDevices" MatchesWhen="Includes" Value="VoiceCall"/>
               <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-              <CompoundRule Type="Any">
-                <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-              </CompoundRule>
+              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
             </CompoundRule>
           </CompoundRule>
           <CompoundRule Type="Any">
@@ -687,13 +711,9 @@
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Ihf"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headset"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headphones"/>
-            <CompoundRule Type="All">
-              <CompoundRule Type="Any">
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
-              </CompoundRule>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
           </CompoundRule>
           <CompoundRule Type="Any">
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="Normal"/>
@@ -731,13 +751,9 @@
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Ihf"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headset"/>
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headphones"/>
-            <CompoundRule Type="All">
-              <CompoundRule Type="Any">
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
-                <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
-              </CompoundRule>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
+            <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
           </CompoundRule>
           <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="Normal"/>
           <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Deep"/>
@@ -865,7 +881,7 @@
     <Configurations>
       <Configuration Name="Applicable">
         <CompoundRule Type="All">
-          <SelectionCriterionRule SelectionCriterion="DirectStream" MatchesWhen="Is" Value="True"/>
+          <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Offload"/>
         </CompoundRule>
       </Configuration>
       <Configuration Name="NotApplicable">
@@ -904,10 +920,7 @@
               <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Ihf"/>
             </CompoundRule>
             <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Primary"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Fast"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Deep"/>
-              <SelectionCriterionRule SelectionCriterion="DirectStream" MatchesWhen="Is" Value="True"/>
+              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="IsNot" Value="none"/>
               <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
               <SelectionCriterionRule SelectionCriterion="FmEnabled" MatchesWhen="Is" Value="True"/>
             </CompoundRule>
@@ -918,10 +931,7 @@
               <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headphones"/>
             </CompoundRule>
             <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Primary"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Fast"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Deep"/>
-              <SelectionCriterionRule SelectionCriterion="DirectStream" MatchesWhen="Is" Value="True"/>
+              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="IsNot" Value="none"/>
               <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
               <SelectionCriterionRule SelectionCriterion="FmEnabled" MatchesWhen="Is" Value="True"/>
             </CompoundRule>
@@ -954,9 +964,7 @@
         <CompoundRule Type="Any">
           <CompoundRule Type="All">
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-            <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
             <CompoundRule Type="Any">
               <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Earpiece"/>
               <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Ihf"/>
@@ -993,9 +1001,7 @@
           <CompoundRule Type="All">
             <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Headset"/>
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-            <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
           </CompoundRule>
         </CompoundRule>
       </Configuration>
@@ -1136,15 +1142,10 @@
               <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoCarkit"/>
             </CompoundRule>
             <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Primary"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Fast"/>
-              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="Includes" Value="Deep"/>
-              <SelectionCriterionRule SelectionCriterion="DirectStream" MatchesWhen="Is" Value="True"/>
+              <SelectionCriterionRule SelectionCriterion="OutputFlags" MatchesWhen="IsNot" Value="none"/>
               <CompoundRule Type="All">
                 <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-                <CompoundRule Type="Any">
-                  <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-                </CompoundRule>
+                <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
               </CompoundRule>
             </CompoundRule>
           </CompoundRule>
@@ -1177,9 +1178,7 @@
           <CompoundRule Type="Any">
             <CompoundRule Type="All">
               <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-              <CompoundRule Type="Any">
-                <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-              </CompoundRule>
+              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
               <CompoundRule Type="Any">
                 <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="Sco"/>
                 <SelectionCriterionRule SelectionCriterion="SelectedOutputDevices" MatchesWhen="Includes" Value="ScoHeadset"/>
@@ -1332,9 +1331,7 @@
           <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InVoipCall"/>
           <CompoundRule Type="All">
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-            <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
           </CompoundRule>
         </CompoundRule>
       </Configuration>
@@ -1365,9 +1362,7 @@
           <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InVoipCall"/>
           <CompoundRule Type="All">
             <SelectionCriterionRule SelectionCriterion="Mode" MatchesWhen="Is" Value="InCsvCall"/>
-            <CompoundRule Type="Any">
-              <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
-            </CompoundRule>
+            <SelectionCriterionRule SelectionCriterion="ModemAudioAvailable" MatchesWhen="Is" Value="True"/>
           </CompoundRule>
         </CompoundRule>
       </Configuration>
@@ -2123,4 +2118,3 @@
     </Settings>
   </ConfigurableDomain>
 </ConfigurableDomains>
-

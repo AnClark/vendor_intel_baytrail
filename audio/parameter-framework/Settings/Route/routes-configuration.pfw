@@ -169,7 +169,7 @@ supDomain: Route
 		domain: Playback
 
 			conf: Applicable
-				DirectStream Is True
+				OutputFlags Includes Offload
 
 				/Route/route_mgr/routes/compressed_media/route_playback/status/applicable = 1
 
@@ -193,10 +193,7 @@ supDomain: Route
 							SelectedOutputDevices Includes Earpiece
 							SelectedOutputDevices Includes Ihf
 						ANY
-							OutputFlags Includes Primary
-							OutputFlags Includes Fast
-							OutputFlags Includes Deep
-							DirectStream Is True
+							OutputFlags IsNot none
 							ModemAudioAvailable Is True
 							FmEnabled Is True
 					## Copied from HwCodec1IA
@@ -205,10 +202,7 @@ supDomain: Route
 							SelectedOutputDevices Includes Headset
 							SelectedOutputDevices Includes Headphones
 						ANY
-							OutputFlags Includes Primary
-							OutputFlags Includes Fast
-							OutputFlags Includes Deep
-							DirectStream Is True
+							OutputFlags IsNot none
 							ModemAudioAvailable Is True
 							FmEnabled Is True
 
@@ -328,10 +322,7 @@ supDomain: Route
 							SelectedOutputDevices Includes ScoHeadset
 							SelectedOutputDevices Includes ScoCarkit
 						ANY
-							OutputFlags Includes Primary
-							OutputFlags Includes Fast
-							OutputFlags Includes Deep
-							DirectStream Is True
+							OutputFlags IsNot none
 							ALL
 								Mode Is InCsvCall
 								ModemAudioAvailable Is True

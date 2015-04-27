@@ -19,7 +19,7 @@ supDomain: Calibration
 						stop_threshold = 0
 						silence_threshold = 0
 						avail_min = 0
-						component: attributes/output_flags
+						component: supported_flags/output_flags
 							direct = 0
 							primary = 1
 							fast = 0
@@ -27,6 +27,7 @@ supDomain: Calibration
 							compress_offload = 0
 							non_blocking = 0
 							hw_av_sync = 0
+						supported_use_cases = 0
 						effects_supported = ""
 
 					component: capture/config
@@ -43,7 +44,10 @@ supDomain: Calibration
 						stop_threshold = 2304
 						silence_threshold = 0
 						avail_min = 1152
-						component: attributes/input_sources
+						component: supported_flags/input_flags
+							fast = 1
+							hw_hotword = 0
+						component: supported_use_cases/input_sources
 							default = 1
 							mic = 1
 							voice_uplink = 1
@@ -72,7 +76,7 @@ supDomain: Calibration
 						stop_threshold = 1280
 						silence_threshold = 0
 						avail_min = 320
-						component: attributes/output_flags
+						component: supported_flags/output_flags
 							direct = 0
 							primary = 1
 							fast = 0
@@ -80,6 +84,7 @@ supDomain: Calibration
 							compress_offload = 0
 							non_blocking = 0
 							hw_av_sync = 0
+						supported_use_cases = 0
 						effects_supported = ""
 
 					component: capture/config
@@ -96,7 +101,10 @@ supDomain: Calibration
 						stop_threshold = 1280
 						silence_threshold = 0
 						avail_min = 320
-						component: attributes/input_sources
+						component: supported_flags/input_flags
+							fast = 1
+							hw_hotword = 0
+						component: supported_use_cases/input_sources
 							default = 0
 							mic = 1
 							voice_uplink = 0
@@ -124,7 +132,7 @@ supDomain: Calibration
 					stop_threshold = 18432
 					silence_threshold = 0
 					avail_min = 4608
-					component: attributes/output_flags
+					component: supported_flags/output_flags
 						direct = 0
 						primary = 0
 						fast = 0
@@ -132,6 +140,7 @@ supDomain: Calibration
 						compress_offload = 0
 						non_blocking = 0
 						hw_av_sync = 0
+					supported_use_cases = 0
 					effects_supported = ""
 
 			component: /Route/route_mgr/routes/low_latency/stream_playback
@@ -149,7 +158,7 @@ supDomain: Calibration
 					stop_threshold = 1280
 					silence_threshold = 0
 					avail_min = 240
-					component: attributes/output_flags
+					component: supported_flags/output_flags
 						direct = 0
 						primary = 0
 						fast = 1
@@ -157,6 +166,7 @@ supDomain: Calibration
 						compress_offload = 0
 						non_blocking = 0
 						hw_av_sync = 0
+					supported_use_cases = 0
 					effects_supported = ""
 
 			component: /Route/route_mgr/routes/
