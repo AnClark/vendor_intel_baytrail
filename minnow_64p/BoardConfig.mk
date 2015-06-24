@@ -307,3 +307,4 @@ endif
 
 # ------------------ END MIX-IN DEFINITIONS ------------------
 
+-include vendor/intel/minnow_64p/BoardConfigVendor.mk
