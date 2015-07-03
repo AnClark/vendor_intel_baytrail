@@ -14,6 +14,7 @@
 # limitations under the License.
 #
 
+add_lunch_combo r2_byt_mrd7-userdebug
 add_lunch_combo byt_mrd7-userdebug
 add_lunch_combo ecs_e7-userdebug
 add_lunch_combo ecs_e7_32p-userdebug

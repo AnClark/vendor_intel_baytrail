@@ -15,6 +15,7 @@
 #
 
 PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/byt_mrd7/r2_byt_mrd7.mk \
     $(LOCAL_DIR)/byt_mrd7/byt_mrd7.mk \
     $(LOCAL_DIR)/ecs_e7/ecs_e7.mk \
     $(LOCAL_DIR)/ecs_e7_32p/ecs_e7_32p.mk \
