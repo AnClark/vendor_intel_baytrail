@@ -30,43 +30,107 @@ TARGET_KERNEL_ARCH := x86_64
 ##############################################################
 # Source: device/intel/mixins/groups/kernel/gmin64/product.mk
 ##############################################################
+# FIXME: Modules are copied twice in the system
+# - as a flat directory where all modules are. This is the method that android's insmod is expecting modules to be
+# - as a tree of modules as output by the kernel build system. This is the way hald's libkmod is expecting modules to be
+# on binary kernel directories/artifactory tarballs, flat directory is stored in $(ARCH)/modules, while tree directory is stored in $(ARCH)/lib/modules
+# both directories contain same data
 
 LOCAL_KERNEL_MODULE_FILES :=
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-  # use default kernel
-  LOCAL_KERNEL_PATH := device/intel/gmin-kernel/$(TARGET_KERNEL_ARCH)
-  LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/bzImage
-  LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
-  LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
-else
-  # use custom kernel
-  LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-  ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_PATH),)
-    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(TARGET_PREBUILT_KERNEL_MODULE_PATH)/*)
+ifneq ($(BUILD_KERNEL_FROM_SRC),)
+  ifeq ($(BUILD_KERNEL_FROM_SRC),1)
+    LOCAL_KERNEL_SRC := $(ANDROID_BUILD_TOP)/kernel/gmin
+  else
+    LOCAL_KERNEL_SRC := $(BUILD_KERNEL_FROM_SRC)
   endif
-  ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH),)
-    LOCAL_KERNEL_MODULE_TREE_PATH := $(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH)
+    QUILT_DIR := $(ANDROID_BUILD_TOP)/kernel/gmin-quilt-representation/
+    QUILT_BUILD_SCRIPT := ./byt-git-build.sh
+    ifneq ($(filter eng userdebug,$(TARGET_BUILD_VARIANT)),)
+      BUILD_KERNEL_FROM_SRC_FLAGS := "-d"
+    endif
+    BUILD_RESULT := $(shell cd $(QUILT_DIR) ; \
+      $(QUILT_BUILD_SCRIPT) $(BUILD_KERNEL_FROM_SRC_FLAGS) $(LOCAL_KERNEL_SRC) >$(LOCAL_KERNEL_SRC)/kernel-build.log ; echo $$? )
+    ifneq ($(BUILD_RESULT),0)
+      $(error KERNEL BUILD FAILED, Error $(BUILD_RESULT) )
+    endif
+    LOCAL_KERNEL_PATH := $(QUILT_DIR)/$(TARGET_KERNEL_ARCH)
+    LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/bzImage
+    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
+    LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
+else
+  ifeq ($(TARGET_PREBUILT_KERNEL),)
+    # use default kernel
+    LOCAL_KERNEL_PATH := device/intel/gmin-kernel/$(TARGET_KERNEL_ARCH)
+    LOCAL_KERNEL := $(LOCAL_KERNEL_PATH)/bzImage
+    LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
+    LOCAL_KERNEL_MODULE_TREE_PATH := $(LOCAL_KERNEL_PATH)/lib/modules
+    BINARIESYAML := device/intel/gmin-kernel/binaries.yml
+  else
+    # use custom kernel. Development mode, developer should invoque make with:
+    # make dist TARGET_PREBUILT_KERNEL=.. TARGET_PREBUILT_KERNEL_MODULE_PATH=.. TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH=..
+    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+    ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_PATH),)
+      LOCAL_KERNEL_MODULE_FILES := $(wildcard $(TARGET_PREBUILT_KERNEL_MODULE_PATH)/*)
+    endif
+    ifneq ($(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH),)
+      LOCAL_KERNEL_MODULE_TREE_PATH := $(TARGET_PREBUILT_KERNEL_MODULE_TREE_PATH)
+    endif
   endif
 endif
 
 ifneq ($(LOCAL_KERNEL_MODULE_TREE_PATH),)
-  LOCAL_KERNEL_VERSION := $(shell strings $(LOCAL_KERNEL_PATH)/vmlinux | grep -m 1 'Linux version' | awk '{print $$3}')
-
-  ifeq ($(LOCAL_KERNEL_VERSION),)
-    $(error Cannot get version for kernel '$(LOCAL_KERNEL)')
+  # for binarydownloader kernels the version is specified in its own file, as the vmlinux may not be present
+  # at Makefile parsing time
+  ifneq (,$(wildcard $(LOCAL_KERNEL_PATH)_version))
+    LOCAL_KERNEL_VERSION := $(shell cat $(LOCAL_KERNEL_PATH)_version)
+  else
+    LOCAL_KERNEL_VERSION := $(shell strings $(LOCAL_KERNEL_PATH)/vmlinux | grep -m 1 'Linux version' | awk '{print $$3}')
+    ifeq ($(LOCAL_KERNEL_VERSION),)
+      $(error Cannot get version for kernel '$(LOCAL_KERNEL)')
+    endif
   endif
 
   FULL_TREE_PATH := $(LOCAL_KERNEL_MODULE_TREE_PATH)/$(LOCAL_KERNEL_VERSION)
-  # Verify FULL_TREE_PATH is an existing folder
-  ifneq ($(shell test -d $(FULL_TREE_PATH) && echo 1), 1)
-    $(error '$(FULL_TREE_PATH)' does not exist or is not a directory)
-  endif
 
-  LOCAL_KERNEL_MODULE_TREE_FILES := $(shell cd $(LOCAL_KERNEL_MODULE_TREE_PATH) && \
-                                            find $(LOCAL_KERNEL_VERSION) -type f)
+  ifneq (,$(wildcard $(LOCAL_KERNEL_PATH)_treemodulefiles))
+  		# for binarydownloader module list is specified in its own file, as they may not be present
+  		# at makefile parsing time, we need to prepend the full path
+        LOCAL_KERNEL_MODULE_TREE_FILES := $(shell cat $(LOCAL_KERNEL_PATH)_treemodulefiles)
+        LOCAL_KERNEL_MODULE_TREE_FILES_FULLPATH := $(foreach f, $(LOCAL_KERNEL_MODULE_TREE_FILES), $(LOCAL_KERNEL_MODULE_TREE_PATH)/$(f))
+
+  else
+      # legacy version where modules are checked in git
+      # Verify FULL_TREE_PATH is an existing folder
+      ifneq ($(shell test -d $(FULL_TREE_PATH) && echo 1), 1)
+        $(error '$(FULL_TREE_PATH)' does not exist or is not a directory)
+      endif
+      LOCAL_KERNEL_MODULE_TREE_FILES := $(shell cd $(LOCAL_KERNEL_MODULE_TREE_PATH) && \
+                                                    find $(LOCAL_KERNEL_VERSION) -type f)
+  endif
+  ifneq (,$(wildcard $(LOCAL_KERNEL_PATH)_flatmodulefiles))
+        LOCAL_KERNEL_MODULE_FILES :=  $(foreach f, $(shell cat $(LOCAL_KERNEL_PATH)_flatmodulefiles), $(LOCAL_KERNEL_PATH)/modules/$(f))
+
+  else
+      # legacy version where modules are checked in git
+      LOCAL_KERNEL_MODULE_FILES := $(wildcard $(LOCAL_KERNEL_PATH)/modules/*)
+  endif
+endif
+
+ifneq ($(BINARIESYAML),)
+  ifeq ($(shell test -f $(BINARIESYAML) && echo 1), 1)
+	# create targets to download the kernel binaries into the source tree
+
+device/intel/gmin-kernel/$(TARGET_KERNEL_ARCH): $(BINARIESYAML)
+	@device/intel/binarydownloader/binarydownloader device/intel/gmin-kernel
+
+    # make all the kernel files depend on device/intel/gmin-kernel/.downloaded
+$(LOCAL_KERNEL) $(LOCAL_KERNEL_MODULE_FILES) $(LOCAL_KERNEL_MODULE_TREE_FILES_FULLPATH): device/intel/gmin-kernel/$(TARGET_KERNEL_ARCH)
+
+  endif
 endif
 
 # Copy kernel into place
+
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel \
 	$(foreach f, $(LOCAL_KERNEL_MODULE_FILES), $(f):system/lib/modules/$(notdir $(f))) \
@@ -75,11 +139,7 @@ PRODUCT_COPY_FILES += \
 # Source: device/intel/mixins/groups/boot-arch/efi/product.mk
 ##############################################################
 TARGET_UEFI_ARCH := x86_64
-ifeq ($(TARGET_BUILD_VARIANT),user)
-    BIOS_VARIANT := release
-else
-    BIOS_VARIANT := debug
-endif
+BIOS_VARIANT := release
 
 $(call inherit-product,build/target/product/verity.mk)
 
@@ -94,6 +154,15 @@ PRODUCT_COPY_FILES += \
 BOARD_SFU_UPDATE := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT).fv
 EFI_IFWI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_ifwi.bin
 EFI_EMMC_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_emmc.bin
+EFI_AFU_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_afu.bin
+DNXP_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_dnxp_0x1.bin
+CFGPART_XML := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cfgpart.xml
+CSE_SPI_BIN := hardware/intel/efi_capsules/$(BIOS_VARIANT)/$(TARGET_PRODUCT)_cse_spi.bin
+
+ifneq ($(TARGET_BUILD_VARIANT),user)
+# Allow to add debug ifwi file only on userdebug and eng flashfiles
+EFI_IFWI_DEBUG_BIN := hardware/intel/efi_capsules/debug/$(TARGET_PRODUCT)_ifwi.bin
+endif
 
 ifneq ($(CALLED_FROM_SETUP),true)
 ifeq ($(wildcard $(BOARD_SFU_UPDATE)),)
@@ -108,8 +177,30 @@ ifeq ($(wildcard $(EFI_IFWI_BIN)),)
 $(warning $(EFI_IFWI_BIN) not found, IFWI binary will not be provided in out/dist/)
 EFI_IFWI_BIN :=
 endif
+ifeq ($(wildcard $(EFI_AFU_BIN)),)
+$(warning $(EFI_AFU_BIN) not found, IFWI binary will not be provided in out/dist/)
+EFI_AFU_BIN :=
 endif
-
+ifeq ($(wildcard $(EFI_IFWI_DEBUG_BIN)),)
+EFI_IFWI_DEBUG_BIN :=
+endif
+ifeq ($(wildcard $(DNXP_BIN)),)
+DNXP_BIN :=
+endif
+ifeq ($(wildcard $(CFGPART_XML)),)
+CFGPART_XML :=
+endif
+ifeq ($(wildcard $(CSE_SPI_BIN)),)
+CSE_SPI_BIN :=
+endif
+endif
+# Kernelflinger won't check the ACPI table oem_id, oem_table_id and
+# revision fields
+KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
+# Allow Kernelflinger to start watchdog prior to boot the kernel
+KERNELFLINGER_USE_WATCHDOG := true
+TARGET_STAGE_USERFASTBOOT := true
+TARGET_USE_USERFASTBOOT := true
 ##############################################################
 # Source: device/intel/mixins/groups/dalvik-heap/tablet-7in-hdpi-1024/product.mk
 ##############################################################
@@ -122,11 +213,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=8m
 ##############################################################
-# Source: device/intel/mixins/groups/houdini/true/product.mk
-##############################################################
-$(call inherit-product-if-exists, vendor/intel/houdini/houdini.mk)
-
-##############################################################
 # Source: device/intel/mixins/groups/graphics/ufo_gen7/product.mk
 ##############################################################
 #
@@ -135,7 +221,6 @@ $(call inherit-product-if-exists, vendor/intel/houdini/houdini.mk)
 PRODUCT_PACKAGES += \
     libdrm \
     libdrm_intel \
-    ufo.prop
 
 #
 # Color conversion library
@@ -156,8 +241,6 @@ else # ufo packages when building from source
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += ro.opengles.version = 196609
-PRODUCT_COPY_FILES += \
-    device/intel/common/ufo/init.ufo.sh:system/etc/init.ufo.sh
 
 ##############################################################
 # Source: device/intel/mixins/groups/ethernet/dhcp/product.mk
@@ -197,16 +280,22 @@ PRODUCT_PACKAGES += \
     libgabi++-mfx \
     libstlport-mfx
 
-# Build OMX wrapper codecs
+# Decoding MPEG4-ASP/H263
 PRODUCT_PACKAGES += \
-    libmdp_omx_core \
-    libstagefright_soft_mp3dec_mdp \
-    libstagefright_soft_aacdec_mdp \
-    libstagefright_soft_aacenc_mdp \
-    libstagefright_soft_vorbisdec_mdp \
-    libstagefright_soft_amrenc_mdp \
-    libstagefright_soft_amrdec_mdp
+	libmixvbp \
+	libmixvbp_mpeg4 \
+	libva_videodecoder \
+	libOMXVideoDecoderMPEG4 \
+	libOMXVideoDecoderH263 \
+	libva_videoencoder \
+	libOMXVideoEncoderMPEG4 \
+	libOMXVideoEncoderH263 \
+	libintelmetadatabuffer \
+	libwrs_omxil_core_pvwrapped \
+	libwrs_omxil_base
 
+# Copy config files to system
+PRODUCT_COPY_FILES += device/intel/common/media/wrs_omxil_components.list:system/etc/wrs_omxil_components.list
 ##############################################################
 # Source: device/intel/mixins/groups/usb/host+acc/product.mk
 ##############################################################
@@ -219,12 +308,6 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
 ##############################################################
-# Source: device/intel/mixins/groups/touch/ft5x0x/product.mk
-##############################################################
-PRODUCT_COPY_FILES += \
-        device/intel/common/touch/ft5x0x.idc:system/usr/idc/ft5x0x.idc \
-        frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-##############################################################
 # Source: device/intel/mixins/groups/device-type/tablet/product.mk
 ##############################################################
 PRODUCT_CHARACTERISTICS := tablet
@@ -232,88 +315,6 @@ PRODUCT_CHARACTERISTICS := tablet
 PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 
-##############################################################
-# Source: device/intel/mixins/groups/gms/true/product.mk
-##############################################################
-FLAG_GMS_AVAILABLE := yes
-$(call inherit-product-if-exists, vendor/google/gms/products/intel_gms.mk)
-##############################################################
-# Source: device/intel/mixins/groups/debug-tools/true/product.mk
-##############################################################
-# If this a debugging build include the public debug modules
-ifneq ($(filter eng userdebug,$(TARGET_BUILD_VARIANT)),)
-
-PRODUCT_PACKAGES += AndroidTerm libjackpal-androidterm4
-
-endif
-##############################################################
-# Source: device/intel/mixins/groups/charger/true/product.mk
-##############################################################
-PRODUCT_PACKAGES += charger charger_res_images
-
-##############################################################
-# Source: device/intel/mixins/groups/hdcpd/true/product.mk
-##############################################################
-# Enable media content protection services
-
-# HDCP Daemon
-PRODUCT_PACKAGES += hdcpd
-##############################################################
-# Source: device/intel/mixins/groups/widevine/true/product.mk
-##############################################################
-ifneq ($(BOARD_USE_64BIT_USERSPACE),true)
-#enable Widevine drm
-PRODUCT_PROPERTY_OVERRIDES += drm.service.enabled=true
-
-PRODUCT_COPY_FILES += device/intel/common/media/mfx_omxil_core_widevine.conf:system/etc/mfx_omxil_core.conf
-
-# There is an additional dependency on hdcpd that should be controlled
-# through the content-protection mixin
-
-PRODUCT_PACKAGES += com.google.widevine.software.drm.xml \
-    com.google.widevine.software.drm \
-    libdrmwvmplugin \
-    libwvm \
-    libdrmdecrypt \
-    libWVStreamControlAPI_L1 \
-    libwvdrm_L1
-
-PRODUCT_PACKAGES_ENG += WidevineSamplePlayer
-
-# WV Modular
-PRODUCT_PACKAGES += libwvdrmengine
-
-PRODUCT_PACKAGES_ENG += ExoPlayerDemo
-
-PRODUCT_PACKAGES += liboemcrypto
-
-PRODUCT_PACKAGES += libmeimm libsecmem
-
-BOARD_WIDEVINE_OEMCRYPTO_LEVEL := 1
-else
-$(warning "We don't have widevine support on 64bit userspace currently!")
-# Make generic definition of media components.
-PRODUCT_COPY_FILES += device/intel/common/media/mfx_omxil_core.conf:system/etc/mfx_omxil_core.conf
-endif # no 64bit support for widevine
-##############################################################
-# Source: device/intel/mixins/groups/power/true/product.mk
-##############################################################
-# Power HAL
-PRODUCT_PACKAGES += power.$(TARGET_BOARD_PLATFORM) \
-                    power_hal_helper
-
-##############################################################
-# Source: device/intel/mixins/groups/lights/true/product.mk
-##############################################################
-# Lights HAL
-PRODUCT_PACKAGES += lights.$(TARGET_BOARD_PLATFORM)
-
-##############################################################
-# Source: device/intel/mixins/groups/memtrack/true/product.mk
-##############################################################
-# memtrack HAL
-PRODUCT_PACKAGES += \
-        memtrack.$(TARGET_BOARD_PLATFORM)
 ##############################################################
 # Source: device/intel/mixins/groups/bluetooth/btusb/product.mk
 ##############################################################
@@ -340,4 +341,17 @@ endif
 # This will build the plugins/libart-extension.so library,  which is dynamically loaded by
 # AOSP and contains Intel optimizations to the compiler.
 PRODUCT_PACKAGES += libart-extension
+##############################################################
+# Source: device/intel/mixins/groups/debug-kernel/default/product.mk
+##############################################################
+ifneq ($(TARGET_BUILD_VARIANT),user)
+PRODUCT_COPY_FILES += device/intel/common/debug/init.kernel.rc:root/init.kernel.rc
+endif
+##############################################################
+# Source: device/intel/mixins/groups/telephony/default/product.mk
+##############################################################
+# product.mk common to Telephony disabled platforms
+
+# Inherit from common Open Source Telephony product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 # ------------------ END MIX-IN DEFINITIONS ------------------

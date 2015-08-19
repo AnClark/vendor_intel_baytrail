@@ -83,6 +83,7 @@ ifneq ($(BOARD_SFU_UPDATE),)
 endif
 	$(hide) $(ACP) $(BOARD_FIRST_STAGE_LOADER) $(efi_root)/loader.efi
 	$(hide) $(ACP) $(BOARD_FIRST_STAGE_LOADER) $(efi_root)/EFI/BOOT/$(efi_default_name)
+	$(hide) echo "Android-IA=\\EFI\\BOOT\\$(efi_default_name)" > $(efi_root)/manifest.txt
 	$(hide) (cd $(efi_root) && zip -qry ../$(notdir $@) .)
 
 bootloader_metadata := $(intermediates)/bootloader-size.txt
@@ -146,30 +147,19 @@ endif
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/testkeys_lockdown.txt:test-keys_efi_lockdown.txt)
 $(call dist-for-goals,droidcore,device/intel/build/testkeys/unlock.txt:efi_unlock.txt)
 
-ifeq (user,efi)
-# For fastboot-uefi we need to parse gpt.ini into
-# a binary format.
-
-GPT_INI2BIN := ./device/intel/common/gpt_bin/gpt_ini2bin.py
-
-$(BOARD_GPT_BIN): $(BOARD_GPT_INI)
-	$(hide) $(GPT_INI2BIN) $< > $@
-	$(hide) echo GEN $(notdir $@)
-
-else
+# for userfastboot, we need the userfastboot image in the bootloader partition.
 INSTALLED_RADIOIMAGE_TARGET += $(PRODUCT_OUT)/fastboot.img
-endif
 
-# Kernelflinger won't check the ACPI table oem_id, oem_table_id and
-# revision fields
-KERNELFLINGER_ALLOW_UNSUPPORTED_ACPI_TABLE := true
 
 ifneq ($(EFI_IFWI_BIN),)
 $(call dist-for-goals,droidcore,$(EFI_IFWI_BIN):$(TARGET_PRODUCT)-ifwi-$(FILE_NAME_TAG).bin)
 endif
 
+ifneq ($(EFI_AFU_BIN),)
+$(call dist-for-goals,droidcore,$(EFI_AFU_BIN):$(TARGET_PRODUCT)-afu-$(FILE_NAME_TAG).bin)
+endif
 ##############################################################
-# Source: device/intel/mixins/groups/flashfiles/true/AndroidBoard.mk
+# Source: device/intel/mixins/groups/flashfiles/json/AndroidBoard.mk
 ##############################################################
 ff_intermediates := $(call intermediates-dir-for,PACKAGING,flashfiles)
 
