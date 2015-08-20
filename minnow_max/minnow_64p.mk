@@ -22,7 +22,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.zygote=zygote64_32
 PRODUCT_COPY_FILES += system/core/rootdir/init.zygote64_32.rc:root/init.zygote64_32.rc
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
 
 BOARD_USE_64BIT_USERSPACE := true
 
@@ -38,5 +38,4 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
-$(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
 $(call inherit-product-if-exists, vendor/intel/minnow_max/device-vendor.mk)

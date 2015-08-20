@@ -17,8 +17,7 @@
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+$(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
 
 PRODUCT_NAME := minnow_max
 PRODUCT_DEVICE := minnow_max
@@ -32,5 +31,4 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 PRODUCT_AAPT_CONFIG := normal large tvdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
 
-$(call inherit-product, device/intel/baytrail/minnow_max/device.mk)
 $(call inherit-product-if-exists, vendor/intel/minnow_max/device-vendor.mk)
