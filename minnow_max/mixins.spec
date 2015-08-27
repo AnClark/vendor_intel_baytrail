@@ -15,7 +15,6 @@ graphics: ufo_gen7(use_opencl=true)
 storage: 4xUSB-sda-emulated
 ethernet: dhcp
 audio: hdmi+usb
-media: ufo
 usb: host+acc
 navigationbar: true
 device-type: tablet
